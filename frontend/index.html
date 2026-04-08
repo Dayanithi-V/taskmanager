@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div id="toast" class="toast hidden"></div>
+      <div id="loading" class="loading hidden">Loading...</div>
+
+      <!-- Auth View -->
+      <section id="auth-view" class="view">
+        <div class="auth-card">
+          <h1>Smart Task Manager</h1>
+          <p class="subtitle">Plan better with AI-powered prioritization.</p>
+
+          <div class="auth-tabs">
+            <button id="show-login" class="tab-btn active">Login</button>
+            <button id="show-register" class="tab-btn">Register</button>
+          </div>
+
+          <form id="login-form" class="form">
+            <label>Email</label>
+            <input id="login-email" type="email" placeholder="you@example.com" required />
+            <label>Password</label>
+            <input id="login-password" type="password" placeholder="Enter password" required />
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+
+          <form id="register-form" class="form hidden">
+            <label>Email</label>
+            <input id="register-email" type="email" placeholder="you@example.com" required />
+            <label>Password</label>
+            <input
+              id="register-password"
+              type="password"
+              placeholder="Choose password"
+              required
+            />
+            <button type="submit" class="btn btn-primary">Create Account</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Dashboard View -->
+      <section id="dashboard-view" class="view hidden">
+        <header class="dashboard-header">
+          <div>
+            <h2>Smart Task Manager</h2>
+            <p class="subtitle">Track your tasks and prioritize instantly.</p>
+          </div>
+          <div class="header-actions">
+            <button id="prioritize-btn" class="btn btn-accent">Prioritize Tasks</button>
+            <button id="refresh-btn" class="btn btn-light">Refresh</button>
+            <button id="logout-btn" class="btn btn-light">Logout</button>
+          </div>
+        </header>
+
+        <main class="dashboard-grid">
+          <section class="panel">
+            <h3>Add Task</h3>
+            <form id="task-form" class="form">
+              <label>Title</label>
+              <input id="task-title" type="text" placeholder="Task title" required />
+
+              <label>Description</label>
+              <textarea id="task-description" rows="3" placeholder="Task details"></textarea>
+
+              <label>Deadline</label>
+              <input id="task-deadline" type="datetime-local" />
+
+              <label>Importance (1-5)</label>
+              <select id="task-importance">
+                <option value="1">1 - Very Low</option>
+                <option value="2">2 - Low</option>
+                <option value="3" selected>3 - Medium</option>
+                <option value="4">4 - High</option>
+                <option value="5">5 - Very High</option>
+              </select>
+
+              <button type="submit" class="btn btn-primary">Add Task</button>
+            </form>
+          </section>
+
+          <section class="panel">
+            <div class="tasks-head">
+              <h3>Your Tasks</h3>
+              <span id="mode-label" class="badge">Recent order</span>
+            </div>
+            <div id="task-list" class="task-list"></div>
+          </section>
+        </main>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+

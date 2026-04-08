@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard - Smart Task Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="card dashboard-shell">
+        <div class="dashboard-header">
+          <div>
+            <h1>My Tasks</h1>
+            <p class="subtitle">Add tasks, then let the AI help you decide what to do first.</p>
+          </div>
+          <div>
+            <span class="badge">Smart Task Manager</span>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <button id="ai-button" class="secondary">AI prioritize</button>
+          <button id="refresh-button" class="secondary">Refresh</button>
+          <div style="flex: 1 1 auto"></div>
+          <button id="logout-button" class="secondary">Log out</button>
+        </div>
+
+        <div id="message" class=""></div>
+
+        <div class="dashboard-grid" style="margin-top: 1rem">
+          <div>
+            <h2>Add task</h2>
+            <form id="task-form">
+              <div class="field">
+                <label for="title">Title</label>
+                <input id="title" name="title" required />
+              </div>
+              <div class="field">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="3"></textarea>
+              </div>
+              <div class="field">
+                <label for="deadline">Deadline</label>
+                <input
+                  id="deadline"
+                  name="deadline"
+                  type="datetime-local"
+                  placeholder="Optional"
+                />
+              </div>
+              <div class="field">
+                <label for="importance">Importance (1-5)</label>
+                <select id="importance" name="importance">
+                  <option value="1">1 - Very low</option>
+                  <option value="2">2 - Low</option>
+                  <option value="3" selected>3 - Medium</option>
+                  <option value="4">4 - High</option>
+                  <option value="5">5 - Very high</option>
+                </select>
+              </div>
+              <button class="primary" type="submit">Add task</button>
+            </form>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center">
+              <h2>Tasks</h2>
+              <span class="priority-label" id="priority-label">
+                Showing: most recent first
+              </span>
+            </div>
+            <div id="task-list" class="task-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+  </html>
+

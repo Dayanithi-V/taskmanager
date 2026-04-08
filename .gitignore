@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+smart_task_manager.db
+.DS_Store
+

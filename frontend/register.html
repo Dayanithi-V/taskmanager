@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Register - Smart Task Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="card">
+        <h1>Create account</h1>
+        <p class="subtitle">Start organizing your tasks in a smart way.</p>
+
+        <form id="register-form">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required />
+          </div>
+
+          <button class="primary" type="submit">Sign up</button>
+        </form>
+
+        <div id="message" class=""></div>
+
+        <div class="link-row">
+          <span>Already have an account?</span>
+          <a href="login.html">Log in</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script>
+      const form = document.getElementById("register-form");
+      const messageEl = document.getElementById("message");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        messageEl.textContent = "";
+        messageEl.className = "";
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+
+        try {
+          const res = await fetch(API_BASE + "/auth/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          });
+
+          const data = await res.json();
+
+          if (!res.ok) {
+            throw new Error(data.detail || "Registration failed");
+          }
+
+          messageEl.textContent = "Account created! You can now log in.";
+          messageEl.className = "success";
+        } catch (err) {
+          messageEl.textContent = err.message;
+          messageEl.className = "error";
+        }
+      });
+    </script>
+  </body>
+  </html>
+
