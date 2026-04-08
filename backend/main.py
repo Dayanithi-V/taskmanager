@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from . import models
+from .config import CORS_ORIGINS
 from .database import engine
 from .routers import ai, auth, tasks
 
@@ -11,10 +12,10 @@ models.Task.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Smart Task Manager with AI Prioritization")
 
-# In development we allow all origins to keep things simple.
+# CORS origins come from env (CORS_ORIGINS).
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

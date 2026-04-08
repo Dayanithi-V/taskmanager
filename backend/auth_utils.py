@@ -8,13 +8,9 @@ from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 
 from . import models
+from .config import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM, SECRET_KEY
 from .database import get_db
 from .schemas import TokenData
-
-# In a real app, load these from environment variables.
-SECRET_KEY = "CHANGE_THIS_SECRET_KEY_FOR_PRODUCTION"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
