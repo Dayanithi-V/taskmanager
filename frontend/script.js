@@ -1,4 +1,5 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE =
+  "https://taskmanager-api-123-cbcdg6gcc8eqhhb0.eastasia-01.azurewebsites.net";
 
 const authView = document.getElementById("auth-view");
 const dashboardView = document.getElementById("dashboard-view");
