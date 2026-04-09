@@ -26,3 +26,9 @@ ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "1440
 # CORS
 CORS_ORIGINS = _parse_cors_origins(os.getenv("CORS_ORIGINS", "*"))
 
+# ML Prioritization
+USE_ML_PRIORITIZATION = os.getenv("USE_ML_PRIORITIZATION", "false").lower() == "true"
+ML_MODEL_PATH = os.getenv(
+    "ML_MODEL_PATH", "backend/ml/model/priority_model.joblib"
+)
+
