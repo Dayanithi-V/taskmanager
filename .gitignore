@@ -5,3 +5,13 @@ smart_task_manager.db
 .DS_Store
 backend/ml/model/*.joblib
 
+# Local / CI SQLite used by pytest autoconfig
+test_pytest.sqlite
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+!infra/terraform/terraform.tfvars.example
+!infra/terraform/azure-taskmanager-addons/terraform.tfvars.example
+

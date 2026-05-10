@@ -1,0 +1,12 @@
+.git
+.github
+infra/terraform/.terraform
+.pytest_cache
+.venv
+venv
+__pycache__
+*.pyc
+*.db
+*.sqlite
+smart_task_manager.db
+backend/ml/model/*.joblib
