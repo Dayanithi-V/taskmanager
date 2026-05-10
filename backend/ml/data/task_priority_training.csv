@@ -1,0 +1,52 @@
+title,description,importance,hours_to_deadline,has_deadline,target_priority
+Prepare exam notes,revise physics chapters,5,8,1,9.8
+Project demo rehearsal,final practice with team,5,20,1,9.1
+Buy groceries,weekly home shopping,2,48,1,4.2
+Team meeting sync,weekly progress meeting,3,6,1,7.1
+Complete assignment,submit cloud assignment,4,18,1,8.2
+Workout session,go to gym,2,72,1,3.8
+Client follow-up call,urgent feedback on deliverable,4,4,1,9.0
+Read book,personal reading time,1,120,1,2.1
+Pay electricity bill,due payment reminder,4,3,1,9.2
+Fix production bug,urgent issue from users,5,2,1,10.0
+Prepare PPT,review presentation slides,3,30,1,6.4
+Laundry,weekly clothes wash,1,36,1,2.8
+Interview preparation,practice technical questions,5,10,1,9.4
+Call parents,weekly family check-in,2,24,1,4.8
+Update resume,add latest project details,3,60,1,4.9
+Plan trip,check travel options,1,200,1,1.8
+Submit internship form,deadline today,5,1,1,10.0
+Code review,review teammate pull request,4,12,1,7.8
+Organize desk,clean workspace,1,96,1,2.0
+Exam registration,urgent university portal form,5,5,1,9.7
+Book doctor appointment,health checkup booking,3,40,1,5.3
+Data backup,backup laptop files,3,84,1,4.3
+Project report writeup,complete final report,4,16,1,8.4
+Renew ID card,office compliance task,3,20,1,6.1
+Brainstorm startup idea,creative thinking notes,2,168,1,2.9
+Prepare standup notes,daily team update,3,2,1,7.0
+Fix login issue,critical auth bug urgent,5,-2,1,10.0
+Submit reimbursement,finance form submission,3,10,1,6.8
+Database migration check,verify migration scripts,4,14,1,8.0
+Buy birthday gift,friend birthday this weekend,2,52,1,3.9
+Read research paper,ml model comparison study,3,90,1,4.6
+Meeting with mentor,career guidance session,3,5,1,7.3
+Deploy app to cloud,production deployment task,5,7,1,9.6
+Fix UI spacing bug,minor frontend polish,2,12,1,5.2
+Security patch update,apply urgent dependency patch,5,9,1,9.3
+Plan tomorrow tasks,create next-day checklist,2,18,1,4.5
+Clean email inbox,sort pending emails,1,30,1,2.7
+Prepare viva answers,review project architecture,5,6,1,9.5
+Update documentation,write API usage notes,3,55,1,5.0
+Watch tutorial,learn new framework basics,2,144,1,2.5
+Schedule meeting room,book room for discussion,2,22,1,4.1
+Collect certificates,organize internship docs,3,28,1,5.8
+Submit tax proof,monthly compliance deadline,4,11,1,8.1
+Optimize SQL query,improve report performance,4,26,1,7.0
+Call bank support,resolve card issue urgent,4,3,1,8.9
+Write test cases,improve backend reliability,3,34,1,5.9
+Weekly reflection,personal productivity review,1,70,1,2.3
+Prepare hackathon idea,innovation challenge prep,3,40,1,5.4
+Urgent project blocker,dependency failure in build,5,1,1,10.0
+Submit attendance form,daily submission task,3,2,1,7.2
+

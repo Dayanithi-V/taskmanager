@@ -17,6 +17,7 @@ class UserCreate(UserBase):
 
 class UserRead(UserBase):
     id: int
+    role: str = "user"
     created_at: datetime
 
     class Config:
@@ -28,7 +29,12 @@ class UserRead(UserBase):
 
 class Token(BaseModel):
     access_token: str
-    token_type: str
+    token_type: str = "bearer"
+    refresh_token: Optional[str] = None
+
+
+class RefreshTokenRequest(BaseModel):
+    refresh_token: str
 
 
 class TokenData(BaseModel):

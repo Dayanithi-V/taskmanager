@@ -1,0 +1,44 @@
+# =============================================================================
+# terraform.tfvars.example — COPY to terraform.tfvars and edit
+# =============================================================================
+# PowerShell:  Copy-Item terraform.tfvars.example terraform.tfvars
+# Bash:       cp terraform.tfvars.example terraform.tfvars
+#
+# IMPORTANT global uniqueness:
+#   • key_vault_name      → letters + digits only, 3–24 chars, GLOBALLY unique
+#   • storage_account_name → lowercase letters + digits only, 3–24 chars, GLOBALLY unique
+#
+# Log Analytics + Application Insights names must be unique *within the resource group*.
+# If terraform says "name already taken", set log_analytics_name / application_insights_name explicitly.
+# =============================================================================
+
+resource_group_name = "CLOUD_PROJECT"
+location            = "East Asia"
+environment         = "dev"
+project_name        = "taskmanager"
+
+# Optional: override auto-generated names (leave "" to use locals slug + suffix)
+log_analytics_name      = ""
+application_insights_name = ""
+
+# Key Vault: MUST change — globally unique, 3–24 chars, letters and digits only (use lowercase)
+key_vault_name = "kvtaskmgrdevabc01"
+
+# Storage: MUST change — globally unique, 3–24 chars, lowercase letters and digits only
+storage_account_name = "sttaskmgrdevabc01"
+
+# Optional tuning
+log_analytics_retention_days           = 30
+application_insights_sampling_percentage = 100
+
+key_vault_soft_delete_retention_days = 7
+key_vault_purge_protection_enabled   = false
+
+storage_account_tier       = "Standard"
+storage_replication_type   = "LRS"
+storage_container_name     = "appdata"
+
+# Optional extra tags
+# extra_tags = {
+#   Owner = "your-name"
+# }

@@ -1,4 +1,3 @@
-from datetime import datetime
 from typing import List
 
 from fastapi import APIRouter, Depends
@@ -7,34 +6,9 @@ from sqlalchemy.orm import Session
 from .. import models, schemas
 from ..auth_utils import get_current_user
 from ..database import get_db
+from ..ml.inference import model_status, predict_priority
 
 router = APIRouter(prefix="/ai", tags=["ai"])
-
-
-def _compute_priority(task: models.Task) -> float:
-    """
-    Simple "AI-like" prioritization heuristic.
-
-    Higher score = higher priority.
-
-    - Start with importance (1-5).
-    - Add extra points based on how close the deadline is.
-    """
-    base = float(task.importance)
-    if task.deadline:
-        now = datetime.utcnow()
-        # Number of hours until the deadline (could be negative).
-        delta_hours = (task.deadline - now).total_seconds() / 3600.0
-        # Tasks overdue or due very soon get a big boost.
-        if delta_hours <= 0:
-            base += 5.0
-        elif delta_hours <= 24:
-            base += 4.0
-        elif delta_hours <= 72:
-            base += 2.0
-        else:
-            base += 0.5
-    return base
 
 
 @router.get("/prioritize", response_model=schemas.PrioritizedTaskList)
@@ -43,7 +17,8 @@ def prioritize_tasks(
     current_user: models.User = Depends(get_current_user),
 ):
     """
-    Return the current user's tasks sorted by an AI-like priority score.
+    Return the current user's tasks sorted by priority score.
+    Uses ML model when enabled/available, else falls back to heuristic logic.
     """
     tasks: List[models.Task] = (
         db.query(models.Task)
@@ -54,7 +29,7 @@ def prioritize_tasks(
 
     prioritized: List[schemas.PrioritizedTask] = []
     for task in tasks:
-        score = _compute_priority(task)
+        score, _source = predict_priority(task)
         prioritized.append(
             schemas.PrioritizedTask(
                 id=task.id,
@@ -71,4 +46,12 @@ def prioritize_tasks(
     prioritized.sort(key=lambda t: t.priority_score, reverse=True)
 
     return schemas.PrioritizedTaskList(tasks=prioritized)
+
+
+@router.get("/model-status")
+def get_model_status():
+    """
+    Simple debug endpoint to show whether ML mode is active and model is loaded.
+    """
+    return model_status()
 
